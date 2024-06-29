@@ -18,11 +18,16 @@ I love creating intuitive and visually appealing web interfaces."
 I enjoy bringing creativity and aesthetics to the digital world."
   },
 ]
-
+const initialValues = () =>( {
+  fname: '';
+  lname: '';
+  bio: '';
+})
 export default function App() {
   const [members, setMembers] = useState(teamMembers)
   const [editing, setEditing] = useState(null)
   // ✨ Create a third state to track the values of the inputs
+  const [values, setValues] = useState(initialValues())
 
   useEffect(() => {
     // ✨ If the `editing` state changes from null to the number 2 (for example)
@@ -80,17 +85,17 @@ export default function App() {
         <form>
           <div>
             <label htmlFor="fname">First Name </label>
-            <input id="fname" type="text" placeholder="Type First Name" />
+            <input values={values.fnames} id="fname" type="text" placeholder="Type First Name" />
           </div>
 
           <div>
             <label htmlFor="lname">Last Name </label>
-            <input id="lname" type="text" placeholder="Type Last Name" />
+            <input values={values.lname} id="lname" type="text" placeholder="Type Last Name" />
           </div>
 
           <div>
             <label htmlFor="bio">Bio </label>
-            <textarea id="bio" placeholder="Type Bio" />
+            <textarea values={values.bio} id="bio" placeholder="Type Bio" />
           </div>
 
           <div>
